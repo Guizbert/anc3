@@ -11,9 +11,11 @@ public class FermeViewModel {
     private final MenuViewModel menuViewModel;
     private final TerrainViewModel terrainViewModel;
     private final FermeFacade fermeFacade = new FermeFacade();
+
     public MenuViewModel getMenuViewModel() {
         return menuViewModel;
     }
+
     public TerrainViewModel getTerrainViewModel() {
         return terrainViewModel;
     }
@@ -25,8 +27,12 @@ public class FermeViewModel {
     public ReadOnlyBooleanProperty isFermeStartedProperty() {
         return fermeFacade.isStartedProperty();
     }
-    public void setSpacePressed(boolean b){fermeFacade.setActionProperty(b);}
-    public FermeViewModel(){
+
+    public void setSpacePressed(boolean b) {
+        fermeFacade.setActionProperty(b);
+    }
+
+    public FermeViewModel() {
         menuViewModel = new MenuViewModel(fermeFacade);
         terrainViewModel = new TerrainViewModel(fermeFacade);
     }

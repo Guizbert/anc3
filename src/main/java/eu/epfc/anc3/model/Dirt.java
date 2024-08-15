@@ -1,6 +1,6 @@
 package eu.epfc.anc3.model;
 
-class Dirt implements Element{
+class Dirt implements Element {
     @Override
     public ParcelleValue getType() {
         return ParcelleValue.DIRT;
@@ -12,7 +12,8 @@ class Dirt implements Element{
     }
 
     @Override
-    public void setStateChanged(boolean stateChanged) {}
+    public void setStateChanged(boolean stateChanged) {
+    }
 
     @Override
     public boolean isRotten() {

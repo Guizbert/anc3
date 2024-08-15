@@ -5,7 +5,7 @@ import eu.epfc.anc3.view.FermeView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class App extends Application  {
+public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {

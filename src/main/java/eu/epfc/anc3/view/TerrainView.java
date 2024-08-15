@@ -7,12 +7,13 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+
 import static eu.epfc.anc3.view.FermeView.*;
 
 // grid
 class TerrainView extends GridPane {
 
-    public TerrainView (TerrainViewModel terrainViewModel, DoubleProperty fermeWidthProperty){
+    public TerrainView(TerrainViewModel terrainViewModel, DoubleProperty fermeWidthProperty) {
         setGridLinesVisible(false);
         setPadding(new Insets(PADDING));
         // Cellules de même taille

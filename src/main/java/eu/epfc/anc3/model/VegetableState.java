@@ -1,7 +1,7 @@
 package eu.epfc.anc3.model;
 
 abstract class VegetableState {
-    protected int growthDays ; // Nombre de jours nécessaires pour que le légume arrive à maturité
+    protected int growthDays; // Nombre de jours nécessaires pour que le légume arrive à maturité
     protected Vegetable vegetable; // Légume auquel cet état est associé
 
     // Constructeur
@@ -24,6 +24,7 @@ abstract class VegetableState {
                 ", vegetable=" + vegetable +
                 '}';
     }
+
     // Méthode pour récupérer le type de légume associé à cet état
     public abstract ParcelleValue getType();
 
@@ -32,5 +33,6 @@ abstract class VegetableState {
     public abstract int stateProperty();
 
     public abstract boolean isRotten();
+
     public abstract boolean isMaxLevel();
 }

@@ -3,16 +3,17 @@ package eu.epfc.anc3.model;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-class Grass extends Vegetable implements Element{ //BV : pas public
+class Grass extends Vegetable implements Element { //BV : pas public
     IntegerProperty maxGrowthDays = new SimpleIntegerProperty(0);
     IntegerProperty nbJours = new SimpleIntegerProperty(0);
-    int nbJoursSinceStart ;
-    Parcelle parcelle ;
-    Grass(Parcelle parcelle){
+    int nbJoursSinceStart;
+    Parcelle parcelle;
+
+    Grass(Parcelle parcelle) {
         nbJoursSinceStart = 0;
         maxGrowthDays.set(nbJours.getValue() + 12);
         nbJours.addListener((obs, oldVal, newVal) -> {
-            System.out.println("++day ------|>" +  nbJoursSinceStart);
+            System.out.println("++day ------|>" + nbJoursSinceStart);
             this.nextDay();
         });
         setParcelle(parcelle);
@@ -20,14 +21,18 @@ class Grass extends Vegetable implements Element{ //BV : pas public
     }
 
 
-    void nextDay(){
+    void nextDay() {
         ++nbJoursSinceStart;
         isRotten();
     }
-    void setParcelle(Parcelle parcelle){
+
+    void setParcelle(Parcelle parcelle) {
         this.parcelle = parcelle;
     }
-    public ParcelleValue getType(){return ParcelleValue.GRASS;}
+
+    public ParcelleValue getType() {
+        return ParcelleValue.GRASS;
+    }
 
     @Override
     public boolean getStateChanged() {

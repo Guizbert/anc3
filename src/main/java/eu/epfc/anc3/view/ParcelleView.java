@@ -9,6 +9,7 @@ import javafx.collections.SetChangeListener;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,10 +35,10 @@ class ParcelleView extends StackPane {
     private static final Image ROTTEN_YELLOW = new Image("rotten_trucJaune.jpg");
 
 
-
     private final ImageView imageView = new ImageView();
 
     private static final Map<ParcelleValue, Image> images = new HashMap<>();
+
     static {
         images.put(ParcelleValue.EMPTY, DIRT);
         images.put(ParcelleValue.DIRT, DIRT);
@@ -61,7 +62,6 @@ class ParcelleView extends StackPane {
         images.put(ParcelleValue.YELLOW5, YELLOW5);
         images.put(ParcelleValue.ROTTEN_YELLOW, ROTTEN_YELLOW);
     }
-
 
 
     public ParcelleView(ParcelleViewModel parcelleViewModel, DoubleBinding parcelleWidthProperty) {
@@ -90,7 +90,7 @@ class ParcelleView extends StackPane {
         addParcelleImage(ParcelleValue.EMPTY);
 
         // Ajouter des images pour chaque élément dans la parcelle
-        for(Element e : valueProp) {
+        for (Element e : valueProp) {
             addParcelleImage(e.getType());
         }
     }

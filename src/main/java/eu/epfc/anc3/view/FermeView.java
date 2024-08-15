@@ -26,7 +26,8 @@ public class FermeView extends BorderPane {
     private final FermeViewModel fermeViewModel = new FermeViewModel();
     // Composants principaux
     private TerrainView terrainView;
-    public FermeView(Stage primaryStage ){
+
+    public FermeView(Stage primaryStage) {
         start(primaryStage);
     }
 
@@ -35,7 +36,7 @@ public class FermeView extends BorderPane {
         configMainComponents(stage);
 
         // Mise en place de la scène et affichage de la fenêtre
-        Scene scene = new Scene(this,SCENE_MIN_WIDTH,SCENE_MIN_HEIGHT);
+        Scene scene = new Scene(this, SCENE_MIN_WIDTH, SCENE_MIN_HEIGHT);
         configKeyPressed(scene);
         configKeyRealeased(scene);
         stage.setScene(scene);
@@ -44,7 +45,7 @@ public class FermeView extends BorderPane {
         stage.setMinWidth(stage.getWidth());
     }
 
-    private void configMainComponents(Stage stage){
+    private void configMainComponents(Stage stage) {
         // Configuration de la fenêtre
         stage.titleProperty().bind(fermeViewModel.titleProperty());
         stage.getIcons().add(new Image("farmer.png"));
@@ -61,10 +62,11 @@ public class FermeView extends BorderPane {
         fermeViewModel.isFermeStartedProperty().addListener(
                 (obs, oldval, newval) -> configTerrainPane(newval));
     }
+
     private void configTerrainPane(Boolean gameStarted) {
         if (gameStarted) {
             createTerrain();
-            if (fermeViewModel.isFermeStartedProperty().getValue()){
+            if (fermeViewModel.isFermeStartedProperty().getValue()) {
                 this.requestFocus();
             }
         } else {
@@ -81,7 +83,7 @@ public class FermeView extends BorderPane {
 
     private void createTerrain() {
         terrainView = new TerrainView(fermeViewModel.getTerrainViewModel(), gridWidthProperty);
-        System.out.println("Terrain :"+terrainView);
+        System.out.println("Terrain :" + terrainView);
 
         terrainView.minHeightProperty().bind(gridWidthProperty);
         terrainView.minWidthProperty().bind(gridWidthProperty);
@@ -101,14 +103,16 @@ public class FermeView extends BorderPane {
         setLeft(menuView.buttons);
         setRight(menuView.actionVbox);
     }
-    void configKeyRealeased(Scene scene){
+
+    void configKeyRealeased(Scene scene) {
         scene.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.SPACE) {
                 fermeViewModel.setSpacePressed(false);
             }
         });
     }
-    public void configKeyPressed(Scene scene){
+
+    public void configKeyPressed(Scene scene) {
         scene.setOnKeyPressed(keyEvent -> {
             switch (keyEvent.getCode()) {
                 case RIGHT -> {
@@ -136,5 +140,7 @@ public class FermeView extends BorderPane {
         });
     }
 
-    private void spacePressed(boolean b) { fermeViewModel.setSpacePressed(b);}
+    private void spacePressed(boolean b) {
+        fermeViewModel.setSpacePressed(b);
+    }
 }

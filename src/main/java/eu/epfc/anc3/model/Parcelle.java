@@ -16,6 +16,7 @@ class Parcelle {
     BooleanProperty hasVegetable = new SimpleBooleanProperty(false);
     BooleanProperty stateChange = new SimpleBooleanProperty(false);
     private final Map<ParcelleValue, Integer> elementPriorityMap = new HashMap<>();
+
     {
         elementPriorityMap.put(ParcelleValue.DIRT, 1);
         elementPriorityMap.put(ParcelleValue.GRASS, 2);
@@ -49,9 +50,9 @@ class Parcelle {
         return elements;
     }
 
-    ObservableSet<ParcelleValue> getElementsType(){
+    ObservableSet<ParcelleValue> getElementsType() {
         ObservableSet<ParcelleValue> pv = FXCollections.observableSet(new TreeSet<>());
-        for (Element e : elements){
+        for (Element e : elements) {
             pv.add(e.getType());
         }
         return pv;
@@ -62,11 +63,12 @@ class Parcelle {
             hasVegetable.set(true);
         elements.add(e);
     }
-    BooleanProperty stateChangeProperty(){
+
+    BooleanProperty stateChangeProperty() {
         return stateChange;
     }
 
-    void setStateChange(boolean b){
+    void setStateChange(boolean b) {
         stateChange.set(b);
     }
 

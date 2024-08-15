@@ -4,23 +4,26 @@ import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 
-class Farmer implements Element{
+class Farmer implements Element {
 
     private final Position posFarmer;
 
-    public Farmer(){
-        this.posFarmer = new Position(0,0);
+    public Farmer() {
+        this.posFarmer = new Position(0, 0);
     }
 
     public Position getPosFarmer() {
         return posFarmer;
     }
 
-    public void setPosFarmer(int x, int y){
-        posFarmer.setX(x); posFarmer.setY(y);
+    public void setPosFarmer(int x, int y) {
+        posFarmer.setX(x);
+        posFarmer.setY(y);
     }
 
-    public ParcelleValue getType(){return ParcelleValue.FARMER;}
+    public ParcelleValue getType() {
+        return ParcelleValue.FARMER;
+    }
 
     @Override
     public boolean getStateChanged() {
@@ -58,5 +61,7 @@ class Farmer implements Element{
     }
 
     @Override
-    public String toString() {return "Farmer Position : " + getPosFarmer();}
+    public String toString() {
+        return "Farmer Position : " + getPosFarmer();
+    }
 }

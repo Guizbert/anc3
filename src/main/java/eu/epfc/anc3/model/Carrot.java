@@ -9,7 +9,8 @@ class Carrot extends Vegetable implements Element {
     private boolean stateChanged = false;
     private final ReadOnlyObjectWrapper<VegetableState> state = new ReadOnlyObjectWrapper<>();
     private final int maxScore = 100;
-    private Parcelle parcelle ;
+    private Parcelle parcelle;
+
     public Carrot(Parcelle parcelle) {
         super();
         setParcelle(parcelle);
@@ -18,6 +19,7 @@ class Carrot extends Vegetable implements Element {
         });
         this.setState(new CarrotState1(this));
     }
+
     @Override
     public ParcelleValue getType() {
         return state.get().getType();
@@ -26,6 +28,7 @@ class Carrot extends Vegetable implements Element {
     IntegerProperty nbJoursProperty() {
         return nbJours;
     }
+
     @Override
     public boolean getStateChanged() {
         return stateChanged;
@@ -61,14 +64,15 @@ class Carrot extends Vegetable implements Element {
         return false;
     }
 
-    void setParcelle(Parcelle parcelle){
-         this.parcelle = parcelle;
+    void setParcelle(Parcelle parcelle) {
+        this.parcelle = parcelle;
     }
 
 
     public void setState(VegetableState newState) {
         state.set(newState);
     }
+
     public VegetableState getState() {
         return state.get();
     }
@@ -77,6 +81,7 @@ class Carrot extends Vegetable implements Element {
     public String toString() {
         return "Carotte";
     }
+
     public VegetableState getCurrentState() {
         return getState();
     }
@@ -94,7 +99,7 @@ class Carrot extends Vegetable implements Element {
             System.out.println("Carrot State 1 created");
         }
 
-        public int stateProperty(){
+        public int stateProperty() {
             return 1;
         }
 
@@ -142,19 +147,19 @@ class Carrot extends Vegetable implements Element {
     }
 
     //Level2
-    public class CarrotState2 extends VegetableState{
+    public class CarrotState2 extends VegetableState {
         private int nbJours;
 
         public CarrotState2(Vegetable vegetable) {
             super(vegetable);
             parcelle.setStateChange(false);
             vegetable.setState(this);
-            System.out.println(getCurrentState().toString() + " ETAT" );
+            System.out.println(getCurrentState().toString() + " ETAT");
             nbJours = 3;
             System.out.println("Carrot state 2 created");
         }
 
-        public int stateProperty(){
+        public int stateProperty() {
             return 2;
         }
 
@@ -191,6 +196,7 @@ class Carrot extends Vegetable implements Element {
                 this.nextState();
             }
         }
+
         public ParcelleValue getType() {
             return ParcelleValue.CARROT2;
         }
@@ -207,18 +213,19 @@ class Carrot extends Vegetable implements Element {
     }
 
     //Level3
-    public class CarrotState3 extends VegetableState{
+    public class CarrotState3 extends VegetableState {
         private int nbJours;
 
         public CarrotState3(Vegetable vegetable) {
             super(vegetable);
             vegetable.setState(this);
             parcelle.setStateChange(false);
-            System.out.println(getCurrentState().toString() + " ETAT" );
+            System.out.println(getCurrentState().toString() + " ETAT");
             nbJours = 6;
             System.out.println("Carrot state 3 created");
         }
-        public int stateProperty(){
+
+        public int stateProperty() {
             return 3;
         }
 
@@ -243,18 +250,19 @@ class Carrot extends Vegetable implements Element {
 
         @Override
         public int getHarvestPoints() {
-            return maxScore / 2 ;
+            return maxScore / 2;
         }
 
         @Override
         public void nextDay() {
             nbJours++;
             int daysToNextState = 9;
-            if ( nbJours == daysToNextState) {
+            if (nbJours == daysToNextState) {
                 System.out.println("Carrot state 3 changed to state 4");
                 this.nextState();
             }
         }
+
         public ParcelleValue getType() {
             return ParcelleValue.CARROT3;
         }
@@ -270,18 +278,19 @@ class Carrot extends Vegetable implements Element {
     }
 
     //Level4
-    public class CarrotState4 extends VegetableState{
+    public class CarrotState4 extends VegetableState {
         private int nbJours;
 
         public CarrotState4(Vegetable vegetable) {
             super(vegetable);
             vegetable.setState(this);
             parcelle.setStateChange(false);
-            System.out.println(getCurrentState().toString() + " ETAT" );
+            System.out.println(getCurrentState().toString() + " ETAT");
             nbJours = 9;
             System.out.println("Carrot state 4 created");
         }
-        public int stateProperty(){
+
+        public int stateProperty() {
             return 4;
         }
 
@@ -317,6 +326,7 @@ class Carrot extends Vegetable implements Element {
                 this.nextState();
             }
         }
+
         public ParcelleValue getType() {
             return ParcelleValue.CARROT4;
         }
@@ -332,24 +342,26 @@ class Carrot extends Vegetable implements Element {
     }
 
     //Level5-->pourri
-    public class CarrotState5 extends VegetableState{
+    public class CarrotState5 extends VegetableState {
         private int nbJours;
         int maxGrowthDays = 22;
+
         public CarrotState5(Vegetable vegetable) {
             super(vegetable);
             setState(this);
             vegetable.setState(this);
             parcelle.setStateChange(false);
-            System.out.println(getCurrentState().toString() + " ETAT" );
+            System.out.println(getCurrentState().toString() + " ETAT");
             nbJours = 14;
             growthDays = 12;
             System.out.println("Carrot POURRIE created");
         }
 
         @Override
-        public void nextState() {}
+        public void nextState() {
+        }
 
-        public int stateProperty(){
+        public int stateProperty() {
             return 5;
         }
 
@@ -369,16 +381,19 @@ class Carrot extends Vegetable implements Element {
             return (int) ((1.0 / 10.0) * maxScore * (growthDays - nbJours - 12));
         }
 
+
         @Override
         public void nextDay() {
             nbJours++;
         }
+
         public ParcelleValue getType() {
             return ParcelleValue.ROTTEN_CARROT;
         }
 
         @Override
-        public void nextDayWithGrass() {}
+        public void nextDayWithGrass() {
+        }
 
         public VegetableState getCurrentState() {
             return getState();

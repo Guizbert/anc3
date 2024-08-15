@@ -11,17 +11,28 @@ import javafx.collections.ObservableSet;
 public class ParcelleViewModel {
     private final int line, col;
     private final FermeFacade fermeFacade;
-    public ParcelleViewModel(int line, int col, FermeFacade ferme){
+
+    public ParcelleViewModel(int line, int col, FermeFacade ferme) {
         this.col = col;
         this.line = line;
         this.fermeFacade = ferme;
     }
-    public ReadOnlyBooleanProperty isStarted(){return fermeFacade.isStartedProperty();}
-    public ObservableSet<Element> getElementsInCell(){return fermeFacade.getElements(line,col);}
-    public BooleanProperty getElementsStateProperty(){return fermeFacade.getElementsStateProperty(line,col);}
+
+    public ReadOnlyBooleanProperty isStarted() {
+        return fermeFacade.isStartedProperty();
+    }
+
+    public ObservableSet<Element> getElementsInCell() {
+        return fermeFacade.getElements(line, col);
+    }
+
+    public BooleanProperty getElementsStateProperty() {
+        return fermeFacade.getElementsStateProperty(line, col);
+    }
+
     public void play() {
         System.out.println(isStarted());
-        System.out.println(line +" ----- "+ col);
+        System.out.println(line + " ----- " + col);
         fermeFacade.teleport(line, col);
     }
 }

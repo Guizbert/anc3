@@ -33,10 +33,12 @@ class Terrain {
     void addElementToCell(Element e, int line, int col) {
         matrix[line][col].addElement(e);
     }
-    void removeElement(ParcelleValue pv , int line, int col){
-         matrix[line][col].getElements().removeIf(e -> e.getType() == pv);
+
+    void removeElement(ParcelleValue pv, int line, int col) {
+        matrix[line][col].getElements().removeIf(e -> e.getType() == pv);
     }
-    void removeVegetables(Element e, int line, int col){
+
+    void removeVegetables(Element e, int line, int col) {
 
         matrix[line][col].getElements().remove(e);
     }
@@ -44,15 +46,20 @@ class Terrain {
     Parcelle getParcelle(int line, int col) {
         return matrix[line][col];
     }
-    ObservableSet<Element> getElem(int line, int col){return matrix[line][col].getElements();}
 
-    ObservableSet<ParcelleValue> getElemType(int line, int col){return matrix[line][col].getElementsType();}
-
-    boolean containsElementType(ParcelleValue pv, int line, int col){
-        return  matrix[line][col].getElements().stream().map(e -> e.getType()).anyMatch(x -> x == pv);
+    ObservableSet<Element> getElem(int line, int col) {
+        return matrix[line][col].getElements();
     }
 
-    BooleanProperty getElementsStateProperty(int line,int col){
+    ObservableSet<ParcelleValue> getElemType(int line, int col) {
+        return matrix[line][col].getElementsType();
+    }
+
+    boolean containsElementType(ParcelleValue pv, int line, int col) {
+        return matrix[line][col].getElements().stream().map(e -> e.getType()).anyMatch(x -> x == pv);
+    }
+
+    BooleanProperty getElementsStateProperty(int line, int col) {
         return matrix[line][col].stateChangeProperty();
     }
 

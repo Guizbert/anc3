@@ -19,13 +19,13 @@ class Position {
         this.y = y;
     }
 
-    Position(int x, int y){
+    Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
     public String toString() {
-        return "current pos :  x :  " + x + ",  y : "+y;
+        return "current pos :  x :  " + x + ",  y : " + y;
     }
 }
