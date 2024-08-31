@@ -1,7 +1,7 @@
 # ANC3 2223 - Farming Project
 ## Overview
 
-ANC3 is a small game developed using JavaFX.
+ANC3 is a small game developed using JavaFX for school with my friend Kenji.
 
 In this game, you control a farmer who can be moved using the arrow keys or by clicking anywhere on the screen. At the top of the screen, you can see important information such as your score, the number of days passed, and the number of seeds you have (note: seeds were an integral part of the exam). Sleeping is a crucial mechanic in the game; after planting an item, you must sleep to allow it to grow and update.
 ![image](https://github.com/user-attachments/assets/807c7e66-82e5-4a26-ab10-4539cc276e77)
